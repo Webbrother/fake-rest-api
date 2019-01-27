@@ -6,6 +6,11 @@ See my [blog post](https://medium.com/@jonjam/creating-a-fake-rest-api-with-json
 ## Install
 
 Install dependencies with:
+```bash
+npm i
+```
+
+or
 
 ```bash
 yarn install
@@ -14,6 +19,11 @@ yarn install
 ## Usage
 
 Start the REST API with:
+```bash
+npm start
+```
+
+or
 
 ```bash
 yarn run start
