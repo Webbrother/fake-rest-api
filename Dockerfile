@@ -1,27 +1,18 @@
-FROM ubuntu
+FROM mhart/alpine-node:latest
 
-# global dependencies / build-essentials and cli-tools
-RUN \
-  apt-get update && \
-  apt-get install -y --no-install-recommends apt-utils && \
-  apt-get install -y --force-yes build-essential git curl sudo iputils-ping bzip2 && \
-  apt-get clean
-
-# install most current node and global node packages
-RUN \
-  curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash - && \
-  sudo apt-get install -y nodejs
-
-# create the working dir
-#RUN mkdir /code && \
-#  cd /code && \
-#  git clone https://stash.odesk.com/scm/mob/eomobile-frontend.git && \
-#  cd /code/eomobile-frontend/ && \
-#  git fetch && \
-#  git checkout -b dev origin/dev && \
-#  npm i
+RUN mkdir /server-mock
 
 # set the working dir
-WORKDIR /src
+WORKDIR /server-mock
+
+# copy package.json and package-lock.json to install node_modules
+COPY package.json /server-mock
+#COPY package-lock.json /server-mock
+
+RUN npm install -g typescript && npm install -g ts-node #https://stackoverflow.com/a/44764064/2179748
+
+RUN npm install
+
+COPY . /server-mock
 
 CMD ["npm", "start"]
