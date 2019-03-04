@@ -1,10 +1,10 @@
-const groupSchema = {
+const group = {
   type: "object",
   properties: {
     groups: {
       type: "array",
-      minItems: 0,
-      maxItems: 5,
+      minItems: 2,
+      maxItems: 3,
       uniqueItems: true,
       items: {
         type: "object",
@@ -25,4 +25,4 @@ const groupSchema = {
   required: ["groups"]
 };
 
-export default groupSchema;
+module.exports = group;
