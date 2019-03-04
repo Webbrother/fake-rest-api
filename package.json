@@ -12,10 +12,10 @@
     "npm-check": "^5.9.0"
   },
   "scripts": {
-    "generate": "node generate/generate.js",
+    "generate": "node generate.js",
     "prestart": "npm run generate",
     "start": "json-server --watch fake-data/db.json --port 3000",
-    "debug": "ndb ./generate/generate.js",
+    "debug": "ndb ./generate.js",
     "npm-check": "npm-check -s -u"
   }
 }
